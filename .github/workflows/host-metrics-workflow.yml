@@ -43,25 +43,33 @@ jobs:
           uses: actions/checkout@v4
           with:
            ref: 5.2.0
+
+        - name: Download minor packages artifacts 
+          uses: actions/download-artifact@v4
+          with:
+             name: perl-shared-${{ github.event.inputs.OS }}
+             repository: cs1867/minor-packages
+             path: artifacts
+             github-token: ${{ secrets.GIT_ACTIONS }}
+             run-id: ${{ github.event.inputs.MINORPACKAGEID }}   
           
         - name: Download perl-shared artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: perl-shared-ol8
+             name: perl-shared-${{ github.event.inputs.OS }}
              repository: cs1867/perl-shared
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: '9455374414'
+             run-id: ${{ github.event.inputs.PERLSHAREDID }}
 
-             
         - name: Download pscheduler artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: pscheduler-ol8
+             name: pscheduler-${{ github.event.inputs.OS }}
              repository: cs1867/pscheduler
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: '9455180316'
+             run-id: ${{ github.event.inputs.PSCHEDULERID }}
              
         - name: run docker oneshot builder
           run: |

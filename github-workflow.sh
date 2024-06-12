@@ -33,3 +33,5 @@
 
            echo "make host-metrics"
            unibuild  make
+           mkdir ./unibuild-repo
+           unibuild gather ./unibuild-repo

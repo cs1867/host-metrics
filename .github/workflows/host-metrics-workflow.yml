@@ -52,7 +52,7 @@ jobs:
              repository: cs1867/minor-packages
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: '9486572014'   
+             run-id: '9487125054'   
           
         - name: Download perl-shared artifacts 
           uses: actions/download-artifact@v4
@@ -97,7 +97,7 @@ jobs:
               ref: 'github-workflow',
                inputs: {
                 OS: 'ol8',
-                MINORPACKAGEID: '9486572014',
+                MINORPACKAGEID: '9487125054',
                 I2UTILID: '9486709101',
                 OWAMPID: '9486729234',
                 PSCHEDULERID: '9486773288',

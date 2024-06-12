@@ -87,7 +87,7 @@ jobs:
          
         - name: Pass workflow to psconfig repo
           uses: actions/github-script@v6
-          with:
+          with: 
             github-token: ${{ secrets.GIT_ACTIONS }}
             script: |
               await github.rest.actions.createWorkflowDispatch({

@@ -96,7 +96,7 @@ jobs:
               workflow_id: 'psconfig-workflow.yml',
               ref: 'github-workflow',
                inputs: {
-                OS: ol8,
+                OS: 'ol8',
                 MINORPACKAGEID: '9486572014',
                 I2UTILID: '9486709101',
                 OWAMPID: '9486729234',

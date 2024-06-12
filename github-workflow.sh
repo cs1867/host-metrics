@@ -32,4 +32,4 @@
            cat /etc/yum.repos.d/build_artifacts_RPMS.repo
 
            echo "make host-metrics"
-           make
+           unibuild  make

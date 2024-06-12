@@ -2,7 +2,7 @@
 
            ##  THIS NEEDS TO BE REMOVED ONCE DEPENDANCIES ARE RESOLVED
            ##  FOR %{_python}-perfsonar-psconfig in PSCONFIG
-           sudo dnf install -y 'http://linux.mirrors.es.net/perfsonar/el8/x86_64/5/packages/perfsonar-repo-0.11-1.noarch.rpm'
+           sudo dnf install -y --nogpgcheck 'http://linux.mirrors.es.net/perfsonar/el8/x86_64/5/packages/perfsonar-repo-0.11-1.noarch.rpm'
            ###########
            
            echo " change dir to artifact RPM"

@@ -3,8 +3,8 @@
 name: host-metrics-workflow
   
 on: 
-  #push: 
-  #  branches: [ 'github-workflow' ] 
+  push: 
+    branches: [ 'github-workflow' ] 
   workflow_dispatch:
     inputs:   
       OS: 
@@ -47,33 +47,36 @@ jobs:
         - name: Download minor packages artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: minor-packages-${{ github.event.inputs.OS }}
+             name: minor-packages-ol8
              repository: cs1867/minor-packages
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.MINORPACKAGEID }}   
+             run-id: '9482875771'
+             #run-id: ${{ github.event.inputs.MINORPACKAGEID }}   
           
         - name: Download perl-shared artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: perl-shared-${{ github.event.inputs.OS }}
+             name: perl-shared-ol8
              repository: cs1867/perl-shared
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.PERLSHAREDID }}
+             run-id: '9483465752'
+             #run-id: ${{ github.event.inputs.PERLSHAREDID }}
 
         - name: Download pscheduler artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: pscheduler-${{ github.event.inputs.OS }}
+             name: pscheduler-ol8
              repository: cs1867/pscheduler
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.PSCHEDULERID }}
+             run-id: '9483164852'
+             #run-id: ${{ github.event.inputs.PSCHEDULERID }}
              
         - name: run docker oneshot builder
           run: |
-           curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build |  sh -s - --run github-workflow.sh . '${{ github.event.inputs.OS }}'    
+           curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build |  sh -s - --run github-workflow.sh . ol8    
             
         - uses: actions/upload-artifact@v3
           with:

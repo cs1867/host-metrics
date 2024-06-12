@@ -2,7 +2,10 @@
 
 name: host-metrics-workflow
     
-on: 
+on:
+  push: 
+    branches: [ 'github-workflow' ] 
+
   workflow_dispatch:
     inputs:   
       OS: 
@@ -45,33 +48,33 @@ jobs:
         - name: Download minor packages artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: minor-packages-${{ github.event.inputs.OS }}
+             name: minor-packages-ol8
              repository: cs1867/minor-packages
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.MINORPACKAGEID }}   
+             run-id: '9486572014'   
           
         - name: Download perl-shared artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: perl-shared-${{ github.event.inputs.OS }}
+             name: perl-shared-ol8
              repository: cs1867/perl-shared
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.PERLSHAREDID }}
+             run-id: '9487026270'
 
         - name: Download pscheduler artifacts 
           uses: actions/download-artifact@v4
           with:
-             name: pscheduler-${{ github.event.inputs.OS }}
+             name: pscheduler-ol8
              repository: cs1867/pscheduler
              path: artifacts
              github-token: ${{ secrets.GIT_ACTIONS }}
-             run-id: ${{ github.event.inputs.PSCHEDULERID }}
+             run-id: '9486773288'
              
         - name: run docker oneshot builder
           run: |
-           curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build |  sh -s - --run github-workflow.sh . ${{ github.event.inputs.OS }}    
+           curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build |  sh -s - --run github-workflow.sh . ol8    
             
         - uses: actions/upload-artifact@v3
           with:
@@ -93,12 +96,12 @@ jobs:
               workflow_id: 'psconfig-workflow.yml',
               ref: 'github-workflow',
                inputs: {
-                OS: '${{ github.event.inputs.OS }}',
-                MINORPACKAGEID: '${{ github.event.inputs.MINORPACKAGEID }}',
-                I2UTILID: '${{ github.event.inputs.I2UTILID }}',
-                OWAMPID: '${{ github.event.inputs.OWAMPID }}',
-                PSCHEDULERID: '${{ github.event.inputs.PSCHEDULERID }}',
-                PERLSHAREDID: '${{ github.event.inputs.PERLSHAREDID }}',
+                OS: ol8,
+                MINORPACKAGEID: '9486572014',
+                I2UTILID: '9486709101',
+                OWAMPID: '9486729234',
+                PSCHEDULERID: '9486773288',
+                PERLSHAREDID: '9487026270' ,
                 HOSTMETRICSID: '${{ github.run_id }}'
               }
               })

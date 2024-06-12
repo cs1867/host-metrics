@@ -1,4 +1,9 @@
            echo "run the github work flow script"
+
+           ##  THIS NEEDS TO BE REMOVED ONCE DEPENDANCIES ARE RESOLVED
+           ##  FOR %{_python}-perfsonar-psconfig in PSCONFIG
+           sudo sudo dnf install -y 'http://linux.mirrors.es.net/perfsonar/el8/x86_64/5/packages/perfsonar-repo-0.11-1.noarch.rpm'
+           ###########
            
            echo " change dir to artifact RPM"
            cd artifacts/RPMS

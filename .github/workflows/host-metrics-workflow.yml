@@ -91,7 +91,7 @@ jobs:
               owner: 'cs1867',
               repo: 'bundles',
               workflow_id: 'bundles-workflow.yml',
-              ref: 'github-docker',
+              ref: 'github-workflow',
                inputs: {
                 OS: '${{ github.event.inputs.OS }}',
                 MINORPACKAGEID: '${{ github.event.inputs.MINORPACKAGEID }}',

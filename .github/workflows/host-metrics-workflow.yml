@@ -5,7 +5,7 @@ on:
   push:
     branches: [ 'github-workflow' ] 
   workflow_dispatch:
-    inputs:   
+    inputs:    
       OS:  
         description: 'OS to build'
         required: true

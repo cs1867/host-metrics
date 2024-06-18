@@ -2,6 +2,8 @@
 name: host-metrics-workflow
      
 on:
+  push:
+    branches: [ 'github-workflow' ] 
   workflow_dispatch:
     inputs:   
       OS:  
@@ -35,15 +37,16 @@ jobs:
           run: |
             git clone https://github.com/cs1867/project.git project
             cp project/toolbox/workflows/github-workflow.sh .    
+            cp project/toolbox/workflows/test-data.json ./build_vars.json  
         
         - name: Pretty-print BUILD_VARS_JSON
           run: |
-            echo '${{ github.event.inputs.BUILD_VARS_JSON }}'  
+            cat build_vars.json 
             
         - name: Extract dependencies
           id: extract_deps
           run: |
-            echo '${{ github.event.inputs.BUILD_VARS_JSON }}' | jq -r '.repos[] | select(.name == "${{ github.event.repository.name }}") | .deps[]' > deps.txt
+            cat build_vars.json | jq -r '.repos[] | select(.name == "${{ github.event.repository.name }}") | .deps[]' > deps.txt
             echo "Dependencies:"
             cat deps.txt
        

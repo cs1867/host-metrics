@@ -64,6 +64,9 @@ jobs:
           id: extract_deps
           run: |
             echo "$BUILD_VARS_JSON" | jq -r '.repos[] | select(.name == "${{ github.event.repository.name }}") | .deps[]' > deps.txt
+            if "${{ github.event.inputs.OS }}" == 'u20' ] || [ "${{ github.event.inputs.OS }}" == 'u24' ]; then
+              sed -i "minor-packages/d" deps.txt 
+            fi
             echo "Dependencies:"
             cat deps.txt
        

@@ -69,7 +69,7 @@ jobs:
                  sed -i '/minor-packages/d' deps.txt
             ;;
             *)
-                echo "No specific packages to remove for "
+                echo "No specific packages to remove "
             ;;
             esac
             echo "Dependencies:"

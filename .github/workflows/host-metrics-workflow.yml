@@ -114,7 +114,7 @@ jobs:
         - name: run docker oneshot builder and github-actions-workflow.sh
           run: |
             if [ "${{ github.event.inputs.OS }}" == 'ol8' ] || [ "${{ github.event.inputs.OS }}" == 'el9' ]; then
-              curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build | sh -s - --run github-el-workflow.sh . '${{ github.event.inputs.OS }}'  
+              curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build | sh -s - --run github-workflow-el-skip-install.sh . '${{ github.event.inputs.OS }}'  
               elif [ "${{ github.event.inputs.OS }}" == 'd11' ] || [ "${{ github.event.inputs.OS }}" == 'd12' ]; then
               curl -s https://raw.githubusercontent.com/perfsonar/docker-oneshot-builder/main/build | sh -s - --run .sh . '${{ github.event.inputs.OS }}'  
               elif [ "${{ github.event.inputs.OS }}" == 'u20' ] || [ "${{ github.event.inputs.OS }}" == 'u24' ]; then

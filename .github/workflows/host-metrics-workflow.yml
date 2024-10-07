@@ -65,14 +65,15 @@ jobs:
           run: |
             echo "$BUILD_VARS_JSON" | jq -r '.repos[] | select(.name == "${{ github.event.repository.name }}") | .deps[]' > deps.txt
             case  "${{ github.event.inputs.OS }}" in
-              'u20'|'u24')
+            'u20'|'u24')
+                 echo "remove minor packages"
                  sed -i '/minor-packages/d' deps.txt
             ;;
             *)
                 echo "No specific packages to remove "
             ;;
             esac
-            echo "Dependencies:"
+            echo "Dependencies for this build:"
             cat deps.txt
        
         - name: Download artifacts

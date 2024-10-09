@@ -69,7 +69,7 @@ jobs:
               'u20'|'u24')
                  echo "remove minor packages"
                  sed -i '/minor-packages/d' deps.txt
-              v;;
+              ;;
               *)
                 echo "No specific packages to remove "
               ;;

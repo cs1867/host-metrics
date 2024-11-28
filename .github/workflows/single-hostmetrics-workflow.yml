@@ -1,6 +1,6 @@
 name: single-hostmetrics-workflow
 
-on: 
+on:
   push:
     branches: 
       - github-workflow 

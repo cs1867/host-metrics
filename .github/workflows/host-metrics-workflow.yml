@@ -95,7 +95,7 @@ jobs:
                   cp "$artifact_path"/RPMS/*.rpm artifacts/RPMS
                  ;;
                 'd11'|'d12'|'u20'|'u22'|'u24')                
-                  ls -al artifacts/DEBS/*
+                  ls -al artifacts/*
                   ;;
               esac
             done < deps.txt
